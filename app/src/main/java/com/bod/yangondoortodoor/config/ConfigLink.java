@@ -19,4 +19,5 @@ package com.bod.yangondoortodoor.config;
     public static String changpassUrl = "http://192.168.1.231:8000/api/changepassword";
     public static String getAllMessengerLoc = "http://192.168.1.231:8000/api/getMessengersLocation";
 
+     public static String getCheck ="http://192.168.1.231:8000/api/getMessengersLocation";
  }
