@@ -72,8 +72,20 @@ public class Splash extends Activity
         Log.e("User Session", SharePref.getInstance(context).getUserSession()+"");
         if(SharePref.getInstance(context).getUserSession().equalsIgnoreCase("NoSession"))
         {
-             layBox.setVisibility(View.VISIBLE);
-             imgLogo.setVisibility(View.GONE);
+            // layBox.setVisibility(View.VISIBLE);
+            // imgLogo.setVisibility(View.GONE);
+            imgLogo.setVisibility(View.VISIBLE);
+            layBox.setVisibility(View.GONE);
+            Timer timer = new Timer();
+            timer.schedule(new TimerTask()
+            {
+                public void run()
+                {
+                    // findViewById(R.id.loadingPanel).setVisibility(View.GONE);
+                    Intent intent = new Intent(Splash.this,MainActivity.class);
+                    startActivity(intent);
+                }
+            }, 3000);
         }
         else
         {
@@ -95,10 +107,10 @@ public class Splash extends Activity
     public void Login(View v)
     {
         Log.e("coming in Login","Login");
-        ConnectServerUserLogin connlogin = new ConnectServerUserLogin(context);
-        connlogin.execute();
-      // Intent intent = new Intent(Splash.this,MainActivity.class);
-      // startActivity(intent);
+        //ConnectServerUserLogin connlogin = new ConnectServerUserLogin(context);
+       // connlogin.execute();
+       Intent intent = new Intent(Splash.this,MainActivity.class);
+       startActivity(intent);
     }
 
     public void getRegisterID()
@@ -110,6 +122,7 @@ public class Splash extends Activity
        // txtForgotPassword = (TextView)findViewById(R.id.txtForgotPassword);
         imgLogo = (ImageView)findViewById(R.id.imgLogo);
     }
+
 
     public class ConnectServerUserLogin extends AsyncTask
     {
@@ -127,7 +140,6 @@ public class Splash extends Activity
             HttpConnectionParams.setSoTimeout(httpParameters, 0);
             HttpClient client = new DefaultHttpClient(httpParameters);
             HttpPost request = new HttpPost(ConfigLink.loginURL);
-
             try{
                 JSONObject jsonobj = new JSONObject();
                 jsonobj.put("email",edtUserName.getText().toString());
@@ -144,7 +156,6 @@ public class Splash extends Activity
             {
                 e.printStackTrace();
             }
-
             return userdata;
         }
 

@@ -111,11 +111,7 @@ public class PrimaryFragment extends Fragment {
                 pusher1.connect();
             }
         });
-
-
     }
-
-
 
     public class ConnectServerProfile extends AsyncTask
     {
@@ -132,10 +128,8 @@ public class PrimaryFragment extends Fragment {
             HttpParams httpParameters = new BasicHttpParams();
             HttpConnectionParams.setConnectionTimeout(httpParameters, 0);
             HttpConnectionParams.setSoTimeout(httpParameters, 0);
-
             HttpClient client = new DefaultHttpClient(httpParameters);
             HttpPost request = new HttpPost(ConfigLink.getProfileURL);
-
             try
             {
                 JSONObject jsonobj = new JSONObject();
@@ -168,7 +162,6 @@ public class PrimaryFragment extends Fragment {
                 // String msg_word = getResources().getString(R.string.noInternet);
                 // AlertDialogGenerator.showSimpleInfoDialog1(MainActivity.this, msg, msg_word);
             }
-
             else
             {
                 JSONObject json;
@@ -195,9 +188,8 @@ public class PrimaryFragment extends Fragment {
                         txtLastName.setText(lastname);
                         txtPhone.setText(phoneno);
                         txtUserName.setText(username);
-                        txtAddress.setText(numbers+","+ward+","+street+","+city+","+country);
+                        txtAddress.setText(numbers+","+ward+","+street+","+city+","+country );
                     }
-
                     //String msg = getResources().getString(R.string.msgTitle);
                 }
                 catch (JSONException e)
@@ -207,7 +199,5 @@ public class PrimaryFragment extends Fragment {
             }
         }
     }
-
-
 
 }

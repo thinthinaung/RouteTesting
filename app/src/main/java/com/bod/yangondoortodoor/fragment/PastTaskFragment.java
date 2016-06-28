@@ -63,11 +63,12 @@ public class PastTaskFragment extends Fragment {
             HttpConnectionParams.setSoTimeout(httpParameters, 0);
             HttpClient client = new DefaultHttpClient(httpParameters);
             HttpPost request = new HttpPost(ConfigLink.requestOrder);
+
             try
             {
                 JSONObject jsonobj = new JSONObject();
                 jsonobj.put("token", SharePref.getInstance(getActivity()).getUserSession());
-                jsonobj.put("status","confirmed");
+                jsonobj.put("status","delivered");
                 StringEntity se = new StringEntity(jsonobj.toString());
                 Log.e("Post Data", jsonobj.toString());
                 se.setContentType("application/json;charset=UTF-8");
@@ -112,13 +113,12 @@ public class PastTaskFragment extends Fragment {
                             JSONObject jsonObj = new JSONObject();
                             jsonObj = jsonOrder.getJSONObject(i);
                             Order item = new Order();
-                           // item.setOrderResName(jsonObj.getString("restaurant_name"));
                             item.setOrderID(jsonObj.getString("id"));
                             item.setOrderCode(jsonObj.getString("order_code"));
                             item.setOrderDate(jsonObj.getString("order_date"));
-
                             orderList.add(item);
                         }
+
                         adapter = new OrderAdapter(getActivity(),orderList,listPastTask,getFragmentManager());
                         listPastTask.setAdapter(adapter);
                 }
@@ -137,5 +137,6 @@ public class PastTaskFragment extends Fragment {
         ConnectServerPastOrderList connPastOrder = new ConnectServerPastOrderList(getActivity());
         connPastOrder.execute();
     }
+
 }
 

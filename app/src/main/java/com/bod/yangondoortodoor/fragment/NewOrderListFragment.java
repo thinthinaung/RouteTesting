@@ -78,6 +78,7 @@ public class NewOrderListFragment extends Fragment {
                 request.setEntity(se);
                 HttpResponse httpresponse = client.execute(request);
                 userdata = EntityUtils.toString(httpresponse.getEntity());
+
             }
             catch (Exception e)
             {

@@ -281,6 +281,7 @@ public class DetailTaskFragment extends Fragment {
                                 }
                             }
                         }
+
                         layItem.addView(parent);
                         txtdelicharge.setText(deliverCharge);
                         txtordercode.setText(ordercode);

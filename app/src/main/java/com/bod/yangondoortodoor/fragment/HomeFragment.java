@@ -117,14 +117,10 @@ public  class HomeFragment extends Fragment {
     LatLng fourPosition1 = new LatLng(16.813362, 96.169928);
     LatLng point = new LatLng(16.83692208009675,96.12100012600422);
     ProgressDialog pd;
-
-
     //String[] url = new String[2];
    // private int[] colors = new int[]{R.color.primary_dark,R.color.primary,R.color.primary_light,R.color.accent,R.color.primary_dark_material_light};
 
     Handler mHandler = new Handler();
-
-
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -207,8 +203,13 @@ public  class HomeFragment extends Fragment {
                         {
                             options.icon(BitmapDescriptorFactory.fromResource(R.drawable.bgreen));
                         }
+                        if(randomAndroidColor.equalsIgnoreCase("red"))
+                        {
+                            options.icon(BitmapDescriptorFactory.fromResource(R.drawable.bred));
+                        }
+
                         //options.icon(BitmapDescriptorFactory.fromResource(R.drawable.d2dmaker));
-                        options.title(locList.get(j).getMesName());
+                         options.title(locList.get(j).getMesName());
                     }
 
                     if(flag.equalsIgnoreCase("2"))
@@ -224,6 +225,10 @@ public  class HomeFragment extends Fragment {
                         if(randomAndroidColor.equalsIgnoreCase("green"))
                         {
                             options.icon(BitmapDescriptorFactory.fromResource(R.drawable.resgreen));
+                        }
+                        if(randomAndroidColor.equalsIgnoreCase("red"))
+                        {
+                          options.icon(BitmapDescriptorFactory.fromResource(R.drawable.resred));
                         }
                         options.title(locList.get(j).getOrderNo());
                         //options.icon(BitmapDescriptorFactory.fromResource(R.drawable.resmaker));
@@ -246,6 +251,10 @@ public  class HomeFragment extends Fragment {
                         {
                             options.icon(BitmapDescriptorFactory.fromResource(R.drawable.resgreen));
                         }
+                        if(randomAndroidColor.equalsIgnoreCase("red"))
+                        {
+                            options.icon(BitmapDescriptorFactory.fromResource(R.drawable.resred));
+                        }
                         options.title(locList.get(j).getOrderNo());
                        // options.icon(BitmapDescriptorFactory.fromResource(R.drawable.resmaker));
                     }
@@ -264,6 +273,10 @@ public  class HomeFragment extends Fragment {
                         {
                             options.icon(BitmapDescriptorFactory.fromResource(R.drawable.cusgreen));
                         }
+                        if(randomAndroidColor.equalsIgnoreCase("red"))
+                        {
+                            options.icon(BitmapDescriptorFactory.fromResource(R.drawable.cusred));
+                        }
                         options.title(locList.get(j).getOrderNo());
                        // options.icon(BitmapDescriptorFactory.fromResource(R.drawable.customermaker));
                     }
@@ -275,7 +288,6 @@ public  class HomeFragment extends Fragment {
                 {
                     LatLng origin = markerPoints.get(0);
                     LatLng dest = markerPoints.get(1);
-                    //LatLng ldest = markerPoints.get(2);
                     Log.e("first LatLng", origin + "");
                     Log.e("second LatLng", dest + "");
                     markerPoints.clear();
@@ -315,7 +327,6 @@ public  class HomeFragment extends Fragment {
             {
                 sb.append(line);
             }
-
             data = sb.toString();
             br.close();
 
@@ -533,7 +544,11 @@ public  class HomeFragment extends Fragment {
                     locList.get(0).setFlagIcon("yellow");
                     Log.e("value of loop",locList.get(0).getFlagIcon());
                 }
-                if(i==1){ locList.get(1).setFlagIcon("orange");}
+                else if(i==1)
+                { locList.get(1).setFlagIcon("orange");}
+
+                else
+                { locList.get(2).setFlagIcon("red");}
             }
 
             if(DataCarry.locflag.equalsIgnoreCase("true"))
@@ -724,10 +739,10 @@ public  class HomeFragment extends Fragment {
                         // TODO: handle exception
                     }
                 }
+
             }
         }).start();
     }
-
 
     /*public void onLocationChanged(Location location) {
         Log.i("called", "onLocationChanged");
